@@ -1,7 +1,8 @@
 package com.senac.projetopadrao.SchedulingTasks;
 
-import com.senac.projetopadrao.models.Clima;
+import com.senac.projetopadrao.models.Noticia;
 import com.senac.projetopadrao.models.Satelite;
+import com.senac.projetopadrao.repositorys.NoticiaRepository;
 import com.senac.projetopadrao.repositorys.SateliteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -10,25 +11,25 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class MonitorarSatelite {
+public class BuscaNoticias {
 
     //Json convert
     //Json para java online
 
     @Autowired
-    SateliteRepository sateliteRepository;
+    NoticiaRepository noticiaRepository;
 
     @Scheduled(fixedRate = 5000)
-    public void verificarSatelite(){
+    public void verificarNoticia(){
         RestTemplate restTemplate = new RestTemplate();
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplate = restTemplateBuilder.build();
 
-        Satelite satelite =  restTemplate.getForObject(
-                "https://api.wheretheiss.at/v1/satellites/25544",
-                Satelite.class);
+        Noticia noticia = restTemplate.getForObject(
+                "http://servicodados.ibge.gov.br/api/v3/noticias/",
+                Noticia.class);
 
-        sateliteRepository.save(satelite);
+        noticiaRepository.save(noticia);
 
     }
 

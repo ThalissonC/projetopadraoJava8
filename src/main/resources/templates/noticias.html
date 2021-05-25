@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <div class="sp-3"></div>
+    <title>Noticias</title>
+</head>
+<body>
+
+
+<div class="row">
+
+<div class="col-sm">
+
+</div>
+
+    <div class="col-sm text-center">
+        <h1 class="text-center">Noticias</h1>
+
+        <div >
+            <tr th:each="usuario : ${usuarios}">
+                <th>
+                    <td th:text="${ScheduledTasks}">
+
+                    </td>
+                </th>
+            </tr>
+        </div>
+
+        <div class="col align-middle sp-3" style="">
+            <a th:href="add" type="button" class="btn btn-primary">ADD</a>
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Introducao</th>
+                <th scope="col">Data de publicação</th>
+                <th scope="col">Produto ID</th>
+                <th scope="col">Produtos</th>
+                <th scope="col">Editorias</th>
+                <th scope="col">Imagens</th>
+                <th scope="col">Produtos Relacionados</th>
+                <th scope="col">Destaque</th>
+                <th scope="col">Link</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${noticias}">
+                <th scope="row" th:text="${noticias.titulo}"></th>
+                <td th:text="${noticias.introducao}"></td>
+                <td th:text="${noticias.data_publicacao}"></td>
+                <td th:text="${noticias.produto_id}"></td>
+                <td th:text="${noticias.produtos}"></td>
+                <td th:text="${noticias.editorias}"></td>
+                <td th:text="${noticias.imagens}"></td>
+                <td th:text="${produtos_relacionados}"></td>
+                <td th:text="${noticias.destaque}"></td>
+                <td th:text="${noticias.link}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <div class="col-sm">
+
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
